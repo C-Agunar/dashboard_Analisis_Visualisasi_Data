@@ -14,9 +14,9 @@ st.subheader("Analisis pola peminjaman sepeda berdasarkan musim, kecepatan angin
 
 @st.cache_data  
 def load_data():
-    file_path = "./Data/day.csv"  # Mengarahkan ke folder "Data"
+    file_path = "./data/day.csv"  # Mengarahkan ke folder "data" (huruf kecil)
     if not os.path.exists(file_path):  
-        st.error("❌ Dataset tidak ditemukan! Pastikan file `day.csv` ada di dalam folder 'Data'.")
+        st.error("❌ Dataset tidak ditemukan! Pastikan file `day.csv` ada di dalam folder 'data'.")
         return None
     df = pd.read_csv(file_path)
     df['dteday'] = pd.to_datetime(df['dteday'])
