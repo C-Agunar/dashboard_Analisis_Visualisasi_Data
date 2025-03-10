@@ -1,6 +1,6 @@
-# Dashboard Tren Peminjaman Sepeda 
+# Bike Lending Trends Dashboard
 
-✨ **Dicoding Collection Dashboard** Analisis pola peminjaman sepeda berdasarkan musim, kecepatan angin, dan faktor lingkungan.
+✨ **Dicoding Collection Dashboard** Bicycle Lending Trends Dashboard Analyze bicycle lending patterns based on season, wind speed and environmental factors.
 
 ## 📌 Setup Environment & Menjalankan Aplikasi
 
