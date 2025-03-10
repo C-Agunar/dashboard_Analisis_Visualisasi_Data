@@ -1,7 +1,7 @@
-import streamlit as st # type: ignore
-import pandas as pd # type: ignore
-import matplotlib.pyplot as plt # type: ignore
-import seaborn as sns # type: ignore
+import streamlit as st  # type: ignore
+import pandas as pd  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
+import seaborn as sns  # type: ignore
 import os
 
 sns.set(style='dark')
@@ -10,12 +10,13 @@ sns.set(style='dark')
 # 1. Load Data
 # -------------------------------
 st.title("Tren Peminjaman Sepeda 🚲")
-st.subheader('Analisis pola peminjaman sepeda berdasarkan musim, kecepatan angin, dan faktor lingkungan')
+st.subheader("Analisis pola peminjaman sepeda berdasarkan musim, kecepatan angin, dan faktor lingkungan")
 
-@st.cache_data  # Mengganti st.cache dengan st.cache_data
+@st.cache_data  
 def load_data():
-    file_path = "day.csv"  # Pastikan file berada di direktori yang benar
+    file_path = "./Data/day.csv"  # Mengarahkan ke folder "Data"
     if not os.path.exists(file_path):  
+        st.error("❌ Dataset tidak ditemukan! Pastikan file `day.csv` ada di dalam folder 'Data'.")
         return None
     df = pd.read_csv(file_path)
     df['dteday'] = pd.to_datetime(df['dteday'])
@@ -76,7 +77,7 @@ if day_df is not None and not day_df.empty:
         st.subheader("💨 Korelasi Kecepatan Angin dan Peminjaman Sepeda")
         fig, ax = plt.subplots(figsize=(8,6))
         windspeed_bins = pd.cut(day_df['windspeed'], bins=5)
-        windspeed_usage = day_df.groupby(windspeed_bins)['cnt'].mean()
+        windspeed_usage = day_df.groupby(windspeed_bins, observed=False)['cnt'].mean()  # Tambah observed=False
         sns.barplot(x=windspeed_usage.index.astype(str), y=windspeed_usage, color='green', edgecolor='black', ax=ax)
         plt.xlabel("Kecepatan Angin (Binned)", fontsize=12)
         plt.ylabel("Rata-rata Peminjaman Sepeda", fontsize=12)
@@ -95,4 +96,4 @@ if day_df is not None and not day_df.empty:
         plt.yticks(fontsize=12)
         st.pyplot(fig)
 
-        st.caption('Project Carlos Agunar Da Costa 2025')
+        st.caption('Project Carlos Aguiar Da Costa 2025')
