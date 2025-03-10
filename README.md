@@ -36,5 +36,3 @@ streamlit run dashboard.py
 
 ---
 
-Pastikan semua dependensi yang dibutuhkan telah terinstal sebelum menjalankan aplikasi. Semoga berhasil! 🎉
-
